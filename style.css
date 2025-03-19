@@ -145,3 +145,15 @@ button {
 #repo-list a:hover {
     color: var(--secondary-color);
 }
+
+.skills-interests {
+    display: flex;
+    justify-content: flex-start; /* Aligns content to the left */
+    text-align: left;
+    padding-left: 20px; /* Adds some spacing from the edge */
+}
+
+.skills-interests ul {
+    list-style: none; /* Removes default bullets */
+    padding: 0;
+}
