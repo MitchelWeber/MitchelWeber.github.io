@@ -102,3 +102,24 @@ img {
 button {
     transition: background-color 0.3s ease;
 }
+
+/* Light Mode Styles */
+.light-mode {
+    --primary-color: #006494;
+    --secondary-color: #0582CA;
+    --tertiary-color: #00A6FB;
+    --dark-color: #f4f4f4;
+    --background-color: #ffffff;
+    color: black;
+}
+
+/* Update text and background colors */
+.light-mode body {
+    background-color: var(--background-color);
+    color: black;
+}
+
+.light-mode header, .light-mode footer {
+    background-color: var(--primary-color);
+    color: white;
+}
