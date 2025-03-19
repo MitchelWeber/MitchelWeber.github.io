@@ -149,13 +149,15 @@ button {
 .skills-interests {
     display: flex;
     justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically (if needed) */
     text-align: center; /* Centers text */
-    padding: 20px;
+    width: 100%; /* Ensures it takes the full width */
 }
 
 .skills-interests ul {
     list-style: none; /* Removes default bullets */
     padding: 0;
+    display: inline-block; /* Ensures the list is centered */
 }
 
 
