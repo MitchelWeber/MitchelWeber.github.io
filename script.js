@@ -28,3 +28,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetchGitHubRepos();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Portfolio website loaded');
+
+    // Fetch GitHub repositories
+    const githubUsername = 'your-github-username'; // Replace with your GitHub username
+    const repoList = document.getElementById('github-repos');
+
+    fetch(`https://api.github.com/users/${githubUsername}/repos`)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(repo => {
+                const repoItem = document.createElement('li');
+                repoItem.innerHTML = `<a href="${repo.html_url}" target="_blank">${repo.name}</a>`;
+                repoList.appendChild(repoItem);
+            });
+        })
+        .catch(error => console.error('Error fetching repos:', error));
+});
