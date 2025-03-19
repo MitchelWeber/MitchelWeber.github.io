@@ -1,38 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Portfolio website loaded');
 
-    // Smooth Scrolling for Navigation Links
-    document.querySelectorAll('nav ul li a').forEach(anchor => {
-        anchor.addEventListener('click', (event) => {
-            event.preventDefault();
-            const targetId = anchor.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
+    // Fetch GitHub Repositories
+    async function fetchGitHubRepos() {
+        const username = "your-github-username"; // Replace with your GitHub username
+        const repoList = document.getElementById("repo-list");
 
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
+        try {
+            const response = await fetch(`https://api.github.com/users/${username}/repos`);
+            const repos = await response.json();
 
-    // Theme Toggle
-    const toggleButton = document.getElementById('theme-toggle');
-    const body = document.body;
+            // Sort by most recent update
+            repos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
 
-    // Load saved theme from local storage
-    if (localStorage.getItem('theme') === 'light') {
-        body.classList.add('light-mode');
+            // Limit to 5 repositories
+            const maxRepos = 5;
+            repos.slice(0, maxRepos).forEach(repo => {
+                const li = document.createElement("li");
+                li.innerHTML = `<a href="${repo.html_url}" target="_blank">${repo.name}</a> - ⭐ ${repo.stargazers_count}`;
+                repoList.appendChild(li);
+            });
+        } catch (error) {
+            console.error("Error fetching repos:", error);
+            repoList.innerHTML = `<p>Unable to load repositories.</p>`;
+        }
     }
 
-    if (toggleButton) {
-        toggleButton.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
-
-            // Save user preference
-            if (body.classList.contains('light-mode')) {
-                localStorage.setItem('theme', 'light');
-            } else {
-                localStorage.setItem('theme', 'dark');
-            }
-        });
-    }
+    fetchGitHubRepos();
 });

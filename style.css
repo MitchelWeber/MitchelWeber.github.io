@@ -123,3 +123,25 @@ button {
     background-color: var(--primary-color);
     color: white;
 }
+
+#repo-list {
+    list-style: none;
+    padding: 0;
+}
+
+#repo-list li {
+    margin: 10px 0;
+    padding: 10px;
+    background: var(--dark-color);
+    border-radius: 5px;
+}
+
+#repo-list a {
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#repo-list a:hover {
+    color: var(--secondary-color);
+}
