@@ -77,3 +77,28 @@ button {
 button:hover {
     background-color: var(--tertiary-color); /* Button hover effect */
 }
+
+body {
+    line-height: 1.6;
+}
+
+.intro, .about-me, .projects, .contact {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+nav {
+    background-color: var(--tertiary-color);
+    padding: 10px 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Optional: adds rounded corners */
+}
+
+button {
+    transition: background-color 0.3s ease;
+}
